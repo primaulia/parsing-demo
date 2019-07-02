@@ -1,5 +1,11 @@
 require 'json'
 require 'open-uri'
 
-# TODO - Let's fetch name and bio from a given GitHub username
-url = 'https://api.github.com/users/ssaunier'
+url = 'http://www.omdbapi.com/?s=harry&apikey=adf1f2d7'
+user_serialized = open(url).read
+movies = JSON.parse(user_serialized)
+
+movies['Search'].each do |movie|
+  p movie['Title']
+end
+
